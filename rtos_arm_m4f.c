@@ -31,11 +31,8 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
-
-
 #include "tm4c123gh6pm.h"
 
-// REQUIRED: correct these bitbanding references for the off-board LEDs
 
 //Bitbanded Addresses
 
@@ -81,17 +78,15 @@ struct semaphore *keyPressed, *keyReleased, *flashReq, *resource;
 #define STATE_READY      2 // has run, can resume at any time
 #define STATE_DELAYED    3 // has run, but now awaiting timer
 #define STATE_BLOCKED    4 // has run, but now blocked by semaphore
-
 #define MAX_TASKS 10       // maximum number of valid tasks
 
 uint8_t taskCurrent = 0;   // index of last dispatched task
 uint8_t taskCount = 0;     // total number of valid tasks
-uint8_t preempt = 0;       //Preemption
-
 uint8_t kill = 0;
 
 //MODES
 
+uint8_t preempt = 0;       //Preemption
 uint8_t ps = 1;            // priority scheduling
 uint8_t pi = 1;            //priority inheritance
 
