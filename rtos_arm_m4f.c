@@ -624,8 +624,8 @@ if(tcb[i].semaphore!=0 && (tcb[i].state==STATE_READY||tcb[i].state==STATE_DELAYE
 /////////////////////////////////////////////////////////////////////END OF POST SEMAPHORE//////////////////////////////////////////////////////////////////////////////////
 if(tcb[i].state==STATE_BLOCKED)                                                                     //Remove task from resource queue
 {
-    pR_0=tcb[i].semaphore;                                                                          //Set PID to 0
-    pR_0->queueSize = 0;                                                                            //Set task to INVALID
+    pR_0=tcb[i].semaphore;                                                                          //Locate which queue the task is in
+    pR_0->queueSize = 0;                                                                            //Set queuesize of that semaphore to 0
 }
 
 tcb[i].pid = 0;                                                                                     //Set PID to 0
